@@ -7,3 +7,10 @@ spring:
   flyway:
     enabled: false
 debug: true
+op:
+  web:
+    enable: true
+    base-package: "com.only4play.auth"
+    description: "auth service api"
+    title: "auth service"
+    version: "1.0.0"

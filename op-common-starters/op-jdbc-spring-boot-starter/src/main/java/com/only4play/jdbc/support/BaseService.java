@@ -98,7 +98,7 @@ public abstract class BaseService {
             this.t = supplier.get();
             return this;
         }
-        public Creator<T, ID> update(Consumer<T> t){
+        public Creator<T, ID> init(Consumer<T> t){
             Preconditions.checkArgument(Objects.nonNull(t),"entity must supply");
             t.accept(this.t);
             return this;

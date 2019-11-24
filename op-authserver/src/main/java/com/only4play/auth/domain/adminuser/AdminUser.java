@@ -27,7 +27,6 @@ public class AdminUser extends BaseAggregate {
 
   public void init() {
     this.setValidStatus(ValidStatus.VALID);
-    setPhone("333");
   }
 
   public void invalid() {
@@ -37,4 +36,5 @@ public class AdminUser extends BaseAggregate {
   public void valid() {
     setValidStatus(ValidStatus.VALID);
   }
+
 }

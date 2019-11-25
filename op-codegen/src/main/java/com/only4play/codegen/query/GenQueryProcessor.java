@@ -14,6 +14,7 @@ import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
+import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
 import lombok.Data;
 
@@ -30,7 +31,7 @@ public class GenQueryProcessor extends BaseGenProcessor<GenQuery> {
   }
 
   @Override
-  protected void genCode(Element e, RoundEnvironment roundEnvironment) {
+  protected void genCode(TypeElement e, RoundEnvironment roundEnvironment) {
     Set<VariableElement> variableElements = filterFields(e.getEnclosedElements(),
         p -> Objects.nonNull(p.getAnnotation(QueryItem.class)));
     String packageName = e.getAnnotation(GenQuery.class).pkgName();

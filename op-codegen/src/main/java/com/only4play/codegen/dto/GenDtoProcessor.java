@@ -19,6 +19,7 @@ import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
+import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
 import lombok.Data;
 
@@ -38,7 +39,7 @@ public class GenDtoProcessor extends BaseGenProcessor<GenDto> {
   }
 
   @Override
-  protected void genCode(Element e, RoundEnvironment roundEnvironment) {
+  protected void genCode(TypeElement e, RoundEnvironment roundEnvironment) {
     Set<VariableElement> variableElements = filterFields(e.getEnclosedElements(),
         p -> Objects.isNull(p.getAnnotation(IgnoreDto.class)) && !dtoIgnore(p));
     String packageName = e.getAnnotation(GenDto.class).pkgName();

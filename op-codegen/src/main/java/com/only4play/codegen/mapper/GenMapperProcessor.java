@@ -9,6 +9,7 @@ import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
+import javax.lang.model.element.TypeElement;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -27,7 +28,7 @@ public class GenMapperProcessor extends BaseGenProcessor<GenMapper> {
   }
 
   @Override
-  protected void genCode(Element e, RoundEnvironment roundEnvironment) {
+  protected void genCode(TypeElement e, RoundEnvironment roundEnvironment) {
     String className = e.getSimpleName() + SUFFIX;
     String packageName = e.getAnnotation(GenMapper.class).pkgName();
     String pathStr = e.getAnnotation(GenMapper.class).sourcePath();

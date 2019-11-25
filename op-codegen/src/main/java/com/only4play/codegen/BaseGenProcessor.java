@@ -22,6 +22,8 @@ import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
+import javax.lang.model.type.DeclaredType;
+import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.ElementFilter;
 
 /**
@@ -57,7 +59,7 @@ public abstract class BaseGenProcessor<T extends Annotation> extends AbstractPro
   @Override
   public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
     Set<Element> annotatedClass = roundEnv.getElementsAnnotatedWith(processAnnotation);
-    for (Element e : ElementFilter.typesIn(annotatedClass)) {
+    for (TypeElement e : ElementFilter.typesIn(annotatedClass)) {
       genCode(e, roundEnv);
     }
     return false;
@@ -73,9 +75,6 @@ public abstract class BaseGenProcessor<T extends Annotation> extends AbstractPro
     return variableElements;
   }
 
-  /**
-   * gen source code to src/main/java
-   */
   public void genJavaFile(String packageName, String pathStr, TypeSpec.Builder typeSpecBuilder,boolean override) {
     JavaFile javaFile = JavaFile.builder(packageName, typeSpecBuilder.build()).build();
     System.out.println("************Java Source File***********");
@@ -106,8 +105,19 @@ public abstract class BaseGenProcessor<T extends Annotation> extends AbstractPro
         .map(s -> s.name()).orElse(ve.getSimpleName().toString());
   }
 
+  public TypeElement getSuperClass(TypeElement element) {
+    TypeMirror parent = element.getSuperclass();
+    if (parent instanceof DeclaredType) {
+      Element elt = ((DeclaredType) parent).asElement();
+      if (elt instanceof TypeElement) {
+        return (TypeElement) elt;
+      }
+    }
+    return null;
+  }
+
   /**
    * gen code logic
    */
-  protected abstract void genCode(Element e, RoundEnvironment roundEnvironment);
+  protected abstract void genCode(TypeElement e, RoundEnvironment roundEnvironment);
 }

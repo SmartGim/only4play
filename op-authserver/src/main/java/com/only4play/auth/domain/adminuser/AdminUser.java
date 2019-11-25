@@ -1,5 +1,7 @@
 package com.only4play.auth.domain.adminuser;
 
+import com.only4play.codegen.mapper.GenMapper;
+import com.only4play.codegen.vo.GenVo;
 import com.only4play.common.constants.ValidStatus;
 import com.only4play.jdbc.support.BaseAggregate;
 import lombok.AccessLevel;
@@ -14,6 +16,8 @@ import org.springframework.data.relational.core.mapping.Table;
 @FieldDefaults(level = AccessLevel.PROTECTED)
 @Data
 @Table(value = "auth_admin_user")
+@GenMapper(pkgName = "com.only4play.auth.model")
+@GenVo(pkgName = "com.only4play.auth.model")
 public class AdminUser extends BaseAggregate {
   private String username;
   private String password;

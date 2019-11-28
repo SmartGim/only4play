@@ -1,4 +1,4 @@
-package com.only4play;
+package com.only4play.common.annotation;
 
 /**
  * @Author: Gim

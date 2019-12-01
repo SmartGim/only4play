@@ -17,11 +17,11 @@ public class BaseAggregate extends AbstractAggregateRoot<BaseAggregate> {
   private Integer version;
   @Column(value = "create_time")
   @CreatedDate
-  @TypeConverter(toTypeFullName = "java.lang.String")
+  @TypeConverter
   private LocalDateTime createTime;
   @Column(value = "update_time")
   @LastModifiedDate
-  @TypeConverter(toTypeFullName = "java.lang.String")
+  @TypeConverter
   private LocalDateTime updateTime;
 
 }

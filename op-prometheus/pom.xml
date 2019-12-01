@@ -4,10 +4,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <modules>
-    <module>op-jooq-spring-boot-starter</module>
-    <module>op-jdbc-spring-boot-starter</module>
-    <module>op-web-spring-boot-starter</module>
-    <module>op-security-spring-boot-starter</module>
+    <module>op-config-server</module>
+    <module>op-manage-service</module>
   </modules>
   <parent>
     <groupId>com.only4play</groupId>
@@ -15,24 +13,27 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <groupId>com.only4play</groupId>
-  <artifactId>op-common-starters</artifactId>
+  <artifactId>op-prometheus</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
+
   <dependencies>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-configuration-processor</artifactId>
-      <optional>true</optional>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-autoconfigure</artifactId>
-      <optional>true</optional>
+      <groupId>org.yaml</groupId>
+      <artifactId>snakeyaml</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
     </dependency>
     <dependency>
       <groupId>com.only4play</groupId>
-      <artifactId>op-commons</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <artifactId>op-web-spring-boot-starter</artifactId>
+      <version>1.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>

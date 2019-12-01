@@ -7,6 +7,9 @@ spring:
   flyway:
     enabled: false
 debug: true
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
 op:
   web:
     enable: true

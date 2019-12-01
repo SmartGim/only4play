@@ -1,5 +1,8 @@
 package com.only4play.codegen.updater;
 
+/**
+ * @author gim
+ */
 public @interface GenUpdater {
 
   String pkgName();

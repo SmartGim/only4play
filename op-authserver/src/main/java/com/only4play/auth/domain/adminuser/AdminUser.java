@@ -5,7 +5,6 @@ import com.only4play.codegen.mapper.GenMapper;
 import com.only4play.codegen.updater.GenUpdater;
 import com.only4play.codegen.vo.GenVo;
 import com.only4play.codegen.vo.IgnoreVo;
-import com.only4play.common.annotation.TypeConverter;
 import com.only4play.common.constants.ValidStatus;
 import com.only4play.jdbc.support.BaseAggregate;
 import lombok.AccessLevel;
@@ -25,17 +24,17 @@ import org.springframework.data.relational.core.mapping.Table;
 @GenDto(pkgName = "com.only4play.auth.model")
 @GenUpdater(pkgName = "com.only4play.auth.model")
 public class AdminUser extends BaseAggregate {
+
   private String username;
+
   private String password;
-  @Column(value = "depart_id")
-  private Long departId;
-  @Column(value = "depart_name")
-  @IgnoreVo
-  private String departName;
+
   private String phone;
+
   @Column(value = "valid_status")
-  @TypeConverter(toTypeFullName = "java.lang.String")
   private ValidStatus validStatus;
+
+  private String realName;
 
   public void init() {
     this.setValidStatus(ValidStatus.VALID);

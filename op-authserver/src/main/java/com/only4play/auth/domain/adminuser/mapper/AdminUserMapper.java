@@ -16,8 +16,6 @@ public interface AdminUserMapper {
     AdminUser user = new AdminUser();
     user.setPhone(creator.getPhone());
     user.setUsername(creator.getUsername());
-    user.setDepartName(creator.getDepartName());
-    user.setDepartId(creator.getDepartId());
     return user;
   }
 }
